@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\sample\models;
+namespace kouosl\exam\models;
 
 use Yii;
 
@@ -53,6 +53,6 @@ class SampleData extends \yii\db\ActiveRecord
      */
     public function getSample()
     {
-        return $this->hasOne(Samples::className(), ['id' => 'sample_id']);
+        return $this->hasOne(Exam::className(), ['id' => 'sample_id']);
     }
 }

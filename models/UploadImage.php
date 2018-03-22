@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\sample\models;
+namespace kouosl\exam\models;
 
 use kouosl\sample\Module;
 use Yii;

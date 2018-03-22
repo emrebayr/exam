@@ -1,12 +1,12 @@
 <?php
 
-namespace kouosl\sample\controllers\backend;
+namespace kouosl\exam\controllers\backend;
 
-use kouosl\sample\models\SampleData;
-use kouosl\sample\models\UploadImage;
+use kouosl\exam\models\ExamData;
+use kouosl\exam\models\UploadImage;
 use Yii;
-use kouosl\sample\models\Samples;
-use kouosl\sample\models\SamplesSearch;
+use kouosl\exam\models\Exam;
+use kouosl\exam\models\ExamSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UnauthorizedHttpException;
@@ -16,7 +16,7 @@ use yii\filters\AccessControl;
 /**
  * SamplesController implements the CRUD actions for Sample model.
  */
-class SamplesController extends DefaultController
+class ExamController extends DefaultController
 {
     public function behaviors()
     {
@@ -60,7 +60,7 @@ class SamplesController extends DefaultController
     	
 
     	
-        $searchModel = new SamplesSearch();
+        $searchModel = new ExamSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('_manage', [
@@ -92,7 +92,7 @@ class SamplesController extends DefaultController
     {
 
     	
-        $model = new Samples();
+        $model = new Exam();
 
         $uploadImage = new UploadImage();
 
@@ -104,7 +104,7 @@ class SamplesController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'Sample Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('exam', 'Exam Not Saved' )]);
 
                 return $this->render('_create', ['model' => $model]); // error
             }
@@ -145,7 +145,7 @@ class SamplesController extends DefaultController
 
             if(!$model->save()){
 
-                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('sample', 'Sample Not Saved' )]);
+                yii::$app->session->setFlash('flashMessage', ['type' => 'error', 'message' => Module::t('exam', 'Exam Not Saved' )]);
 
                 return $this->render('_update', ['model' => $model]); // error
             }
@@ -170,7 +170,7 @@ class SamplesController extends DefaultController
     public function actionDelete($id)
     {
 
-        SampleData::deleteAll(['sample_id' => $id]);
+        ExamData::deleteAll(['exam_id' => $id]);
 
         $model = $this->findModel($id);
 
@@ -193,7 +193,7 @@ class SamplesController extends DefaultController
      */
     protected function findModel($id)
     {
-        if (($model = Samples::findOne($id)) !== null) {
+        if (($model = Exam::findOne($id)) !== null) {
 
             return $model;
 
